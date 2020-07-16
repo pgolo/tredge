@@ -1,6 +1,6 @@
 # tredge
 
-This is tiny yet fast module to get set of explicitly defined transitive edges from an acyclic directed graph. It takes graph represented as dictionary (keys are children, values are iterables with parents), or as iterable of iterables representing edges `((child, parent))`, or file object pointing to tab-delimited file with 2 columns `(child, parent)`, and outputs set of transitive edges found there.
+This is tiny yet fast module to get set of explicitly defined transitive edges from a directed acyclic graph. Given a DAG with edges `child`<--`parent` represented as dictionary (keys are children, values are iterables with parents), or as iterable of iterables representing edges ((`child`, `parent`)), or file object pointing to tab-delimited file with 2 columns (`child`, `parent`), it returns set of transitive edges found there. Original intent of this package was to use it for removing redundant edges from tree structures.
 
 Usage:
 
