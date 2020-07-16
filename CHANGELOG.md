@@ -9,4 +9,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Simple module that finds explicitly defined transitive edges in an acyclic directed graph
+- Simple module that finds explicitly defined transitive edges in an directed acyclic graph
