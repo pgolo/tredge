@@ -2,3 +2,6 @@
 **/__pycache__/*
 !**/.gitkeep
 !**/.gitignore
+build/*
+dist/*
+tredge.egg-info/*
