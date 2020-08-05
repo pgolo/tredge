@@ -6,7 +6,7 @@ with open('README.md', mode='r', encoding='utf8') as f:
 
 setup(
     name='tredge',
-    version='0.0.2',
+    version='0.0.3',
     description='Python module for finding transitive edges in a directed acyclic graph',
     long_description=long_description,
     long_description_content_type='text/markdown',
