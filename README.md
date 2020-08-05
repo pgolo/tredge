@@ -7,16 +7,18 @@
 
 This is tiny yet fast module to get set of explicitly defined transitive edges from a directed acyclic graph. Given a DAG with edges `child`<--`parent` represented as dictionary (keys are children, values are iterables with parents), or as iterable of iterables representing edges ((`child`, `parent`)), or as file object pointing to tab-delimited file with 2 columns (`child`, `parent`), it returns set of transitive edges found there. Original intent of this package was to use it for removing redundant edges from tree structures.
 
+If a given graph is cyclic, `transitive_edges` function will not return edges that include vertices participating in loops. To find such vertices beforehand or make sure there are none, there is a function `cycles(g)`.
+
 Usage:
 
 ```python
 import tredge
 
 g = {
-    'b': set(['a']),
-    'c': set(['a']),
-    'd': set(['b', 'c', 'a']),
-    'e': set(['d', 'a'])
+    'b': {'a'},
+    'c': {'a'},
+    'd': {'b', 'c', 'a'},
+    'e': {'d', 'a'}
 }
 result = tredge.transitive_edges(g)
 print(result)
@@ -64,4 +66,21 @@ with open('input_file.tab', mode='r', encoding='utf8') as g:
 print(result)
 
 # {('d', 'a'), ('e', 'a')}
+```
+
+To check if a graph has cycles:
+
+```python
+import tredge
+
+g = {
+    'b': {'a'},
+    'c': {'a'},
+    'd': {'b', 'c', 'a'},
+    'e': {'d', 'a'}
+}
+result = tredge.cycles(g)
+print(result)
+
+# {'e', 'c', 'd'}
 ```

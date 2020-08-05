@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Added function `cycles(g)` to check if a graph has cycles
+
 ### Changed
 
 ### Deleted
