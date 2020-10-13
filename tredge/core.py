@@ -35,6 +35,18 @@ def get_transitive_edges(nodes):
             ret = ret.union(result)
     return ret
 
+def get_transitive_edges_generator(nodes):
+    for node_id in nodes:
+        result = set(
+            [
+                (node_id, node_parent) for transitive_edge in [
+                    set(path_to_node[2:]).intersection(nodes[node_id]) for path_to_node in all_paths(nodes, node_id)[0]
+                ] for node_parent in transitive_edge
+            ]
+        )
+        if result:
+            yield result
+
 def get_cycles(nodes):
     ret = set()
     for node_id in nodes:
@@ -42,6 +54,12 @@ def get_cycles(nodes):
         if cycle:
             ret.add(node_id)
     return ret
+
+def get_cycles_generator(nodes):
+    for node_id in nodes:
+        cycle = all_paths(nodes, node_id)[1]
+        if cycle:
+            yield node_id
 
 def process_list(graph, function):
     nodes = {}
